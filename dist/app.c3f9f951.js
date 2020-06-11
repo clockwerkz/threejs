@@ -38351,7 +38351,6 @@ init();
 
 function init() {
   camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 5000);
-  camera.position.z = 1;
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xddddd);
   var hlight = new THREE.AmbientLight(0x404040, 100);
@@ -38362,13 +38361,9 @@ function init() {
   });
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
-  loader.load('../models/low_poly_car.gltf', function (obj) {
+  loader.load('../models/scene.gltf', function (obj) {
     scene.add(obj);
     renderer.render(scene, camera);
-  }, function (xhr) {
-    return console.log(xhr.loaded / xhr.total * 100 + '% loaded');
-  }, function (err) {
-    return console.log(err);
   });
 }
 },{"three":"node_modules/three/build/three.module.js","three/examples/jsm/loaders/GLTFLoader":"node_modules/three/examples/jsm/loaders/GLTFLoader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -38399,7 +38394,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60669" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62131" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -9,7 +9,6 @@ init();
 function init() {
  
     camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 5000 );
-    camera.position.z = 1;
  
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0xddddd);
@@ -22,15 +21,10 @@ function init() {
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
-    loader.load(
-        '../models/low_poly_car.gltf',
-        (obj)=> {
-            scene.add(obj);
-            renderer.render(scene, camera);
-        },
-        (xhr)=> console.log((xhr.loaded / xhr.total * 100) + '% loaded'),
-        (err) => console.log(err)
-    );
+    loader.load('../models/scene.gltf', function (obj) {
+        scene.add(obj);
+        renderer.render(scene, camera);
+    });
  
 }
  
